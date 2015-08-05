@@ -1,0 +1,17 @@
+{
+    "name": "pickupman/omnipay-verifi",
+    "description": "Verifi driver for the Omnipay payment processing library\"",
+    "require": {
+        "omnipay/common": "2.0"
+    },
+    "require-dev": {
+        "omnipay/tests": "2.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joe McFrederick",
+            "email": "jomcfred@gmail.com"
+        }
+    ]
+}
