@@ -2,8 +2,8 @@
 
 **Verifi driver for the Omnipay PHP payment processing library**
 
-[![Latest Stable Version](https://poser.pugx.org/omnipay/authorizenet/version.png)](https://packagist.org/packages/pickupman/omnipay-verifi)
-[![Total Downloads](https://poser.pugx.org/omnipay/authorizenet/d/total.png)](https://packagist.org/packages/pickupman/omnipay-verifi)
+[![Latest Stable Version](https://poser.pugx.org/pickupman/omnipay-verifi/version.png)](https://packagist.org/packages/pickupman/omnipay-verifi)
+[![Total Downloads](https://poser.pugx.org/pickupman/omnipay-verifi/d/total.png)](https://packagist.org/packages/pickupman/omnipay-verifi)
 
 [Omnipay](https://github.com/thephpleague/omnipay) is a framework agnostic, multi-gateway payment
 processing library for PHP 5.3+. This package implements Authorize.Net support for Omnipay.
