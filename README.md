@@ -16,7 +16,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "pickupman/omnipay-verifi": "~2.0"
+        "pickupman/omnipay-verifi": "~1.0"
     }
 }
 ```

@@ -13,5 +13,16 @@
             "name": "Joe McFrederick",
             "email": "jomcfred@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": { "Ominipay\\Verifi\\" : "src/" }
+    },
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "verifi"
+    ],
 }
