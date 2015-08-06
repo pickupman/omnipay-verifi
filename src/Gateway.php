@@ -17,7 +17,7 @@ use Omnipay\Verifi\Message\AuthorizeRequest;
  * Any card number which passes the Luhn algorithm and ends in an odd number is declined,
  * for example: 4111111111111111
  */
-class VerifiGateway extends AbstractGateway
+class Gateway extends AbstractGateway
 {
     /**
      * Get the gateway display name

@@ -75,6 +75,7 @@ class PurchaseRequest extends AbstractXmlRequest
     {
         // An amount parameter is required.
         $this->validate('amount', 'transactionReference');
+
         $data = array(
             'amount'           => $this->getAmount(),
             'orderid'          => $this->getTransactionReference(),
@@ -105,7 +106,7 @@ class PurchaseRequest extends AbstractXmlRequest
             $data['state']     = $card->getBillingState();
             $data['country']   = $card->getBillingCountry();
             $data['phone']     = $card->getBillingPhone();
-            $data['email']     = $card->getBillingEmail();
+            $data['email']     = $card->getEmail();
         }
 
         return $data;

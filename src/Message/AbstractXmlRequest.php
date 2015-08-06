@@ -4,6 +4,7 @@
  */
 namespace Omnipay\Verifi\Message;
 use Guzzle\Http\EntityBody;
+use Guzzle\Stream\PhpStreamRequestFactory;
 /**
  * Verifi Abstract XML Request
  *
@@ -117,11 +118,23 @@ abstract class AbstractXmlRequest extends \Omnipay\Common\Message\AbstractReques
             $data
         );
 
-
         // Might be useful to have some debug code here.  Perhaps hook to whatever
         // logging engine is being used.
         // echo "Data == " . json_encode($data) . "\n";
-        $httpResponse = $httpRequest->send(); var_dump($httpResponse);exit();
-        return $this->response = new RestResponse($this, $httpResponse->json(), $httpResponse->getStatusCode());
+        //$httpResponse = $httpRequest->send();
+
+        $factory = new PhpStreamRequestFactory();
+        $stream = $factory->fromRequest($httpRequest);
+
+        // Read until the stream is closed
+        while (!$stream->feof()) {
+            // Read a line from the stream
+            $line = $stream->readLine();
+            // JSON decode the line of data
+        }
+        parse_str($line, $output);
+
+        return $this->response = new Response($this, $output, $factory->getLastResponseHeaders());
     }
+
 }
