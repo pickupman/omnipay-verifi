@@ -15,7 +15,7 @@
         }
     ],
     "autoload": {
-        "psr-4": { "Ominipay\\Verifi\\" : "src/" }
+        "psr-4": { "Omnipay\\Verifi\\" : "src/" }
     },
     "keywords": [
         "gateway",
