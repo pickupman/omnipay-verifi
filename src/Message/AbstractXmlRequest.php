@@ -5,7 +5,7 @@
 namespace Omnipay\Verifi\Message;
 use Guzzle\Http\EntityBody;
 /**
- * Verifi Abstract REST Request
+ * Verifi Abstract XML Request
  *
  * This is the parent class for all Fat Zebra REST requests.
  *
@@ -86,8 +86,20 @@ abstract class AbstractXmlRequest extends \Omnipay\Common\Message\AbstractReques
         return $this->setParameter('username', $value);
     }
 
+    /**
+    * Get the gateway password
+    *
+    * @return string
+    */
+    public function getPassword(){
+        return $this->getParameter('password');
+    }
+
     public function sendData($data)
     {
+        $data['username'] = $this->getUsername();
+        $data['password'] = $this->getPassword();
+
         // don't throw exceptions for 4xx errors
         $this->httpClient->getEventDispatcher()->addListener(
             'request.error',
@@ -102,14 +114,14 @@ abstract class AbstractXmlRequest extends \Omnipay\Common\Message\AbstractReques
             $this->getHttpMethod(),
             $this->getEndpoint(),
             null,
-            json_encode($data)
-        )->setAuth($this->getUsername(), $this->getPassword());
+            $data
+        );
 
 
         // Might be useful to have some debug code here.  Perhaps hook to whatever
         // logging engine is being used.
         // echo "Data == " . json_encode($data) . "\n";
-        $httpResponse = $httpRequest->send();
+        $httpResponse = $httpRequest->send(); var_dump($httpResponse);exit();
         return $this->response = new RestResponse($this, $httpResponse->json(), $httpResponse->getStatusCode());
     }
 }
