@@ -17,7 +17,7 @@ use Omnipay\Verifi\Message\AuthorizeRequest;
  * Any card number which passes the Luhn algorithm and ends in an odd number is declined,
  * for example: 4111111111111111
  */
-class Gateway extends AbstractGateway
+class VerifiGateway extends AbstractGateway
 {
     /**
      * Get the gateway display name
@@ -85,26 +85,9 @@ class Gateway extends AbstractGateway
         return $this->getParameter('password');
     }
 
-    /**
-     * Create a authorize request.
-     *
-     * @param array $parameters
-     * @return \Omnipay\Verifi\Message\AuthorizeRequest
-     */
     public function authorize(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Verifi\Message\AuthorizeRequest', $parameters);
-    }
-
-    /**
-     * Create a capture request.
-     *
-     * @param array $parameters
-     * @return \Omnipay\Verifi\Message\CaptureRequest
-     */
-    public function capture(array $parameters = array())
-    {
-        return $this->createRequest('\Omnipay\Verifi\Message\CaptureRequest', $parameters);
     }
 
     /**
@@ -116,6 +99,17 @@ class Gateway extends AbstractGateway
     public function purchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Verifi\Message\PurchaseRequest', $parameters);
+    }
+
+    /**
+     * Fetch a purchase
+     *
+     * @param array $parameters
+     * @return \Omnipay\Verifi\Message\FetchTransactionRequest
+     */
+    public function fetchTransaction(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Verifi\Message\FetchTransactionRequest', $parameters);
     }
 
     /**
@@ -141,16 +135,37 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * Tokenize a card
+     * Create a plan
      *
      * @param array $parameters
-     * @return \Omnipay\Verifi\Message\CreateCardRequest
+     * @return \Omnipay\Verifi\Message\CreatePlanRequest
      */
-    public function void(array $parameters = array())
+    public function createPlan(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Verifi\Message\VoidRequest', $parameters);
+        return $this->createRequest('\Omnipay\Verifi\Message\CreatePlanRequest', $parameters);
     }
 
+    /**
+     * Fetch details of a plan
+     *
+     * @param array $parameters
+     * @return \Omnipay\Verifi\Message\FetchPlanRequest
+     */
+    public function fetchPlan(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Verifi\Message\FetchPlanRequest', $parameters);
+    }
+
+    /**
+     * Fetch all plans
+     *
+     * @param array $parameters
+     * @return \Omnipay\Verifi\Message\FetchAllPlansRequest
+     */
+    public function fetchAllPlans(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Verifi\Message\FetchAllPlansRequest', $parameters);
+    }
 
      /**
      * Create a customer
