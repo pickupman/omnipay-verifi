@@ -6,7 +6,7 @@
 namespace Omnipay\Verifi\Message;
 
 /**
- * Fat Zebra REST Purchase Request
+ * Verifi Purchase Request
  *
  * In order to create a purchase you must submit the following details:
  *
@@ -31,7 +31,7 @@ namespace Omnipay\Verifi\Message;
  * <code>
  *   // Create a gateway for the Verifi Gateway
  *   // (routes to GatewayFactory::create)
- *   $gateway = Omnipay::create('VerifiGateway');
+ *   $gateway = Omnipay::create('Verifi');
  *
  *   // Initialise the gateway
  *   $gateway->initialize(array(
@@ -79,7 +79,8 @@ class PurchaseRequest extends AbstractXmlRequest
             'amount'           => $this->getAmount(),
             'orderid'          => $this->getTransactionReference(),
             'ipaddress'        => $this->getClientIp(),
-            'orderdescription' => ''
+            'orderdescription' => '',
+            'type'             => 'sale'
         );
 
         // A card token can be provided if the card has been stored
@@ -107,6 +108,7 @@ class PurchaseRequest extends AbstractXmlRequest
             $data['country']   = $card->getBillingCountry();
             $data['phone']     = $card->getBillingPhone();
             $data['email']     = $card->getEmail();
+
         }
 
         return $data;

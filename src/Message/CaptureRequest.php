@@ -16,7 +16,8 @@ class CaptureRequest extends AbstractXmlRequest
 
         $data = array(
             'amount'           => $this->getAmount(),
-            'transactionid'    => $this->getTransactionReference()
+            'transactionid'    => $this->getTransactionReference(),
+            'type'             => 'capture'
         );
 
         return $data;
@@ -31,7 +32,6 @@ class CaptureRequest extends AbstractXmlRequest
      */
     protected function getEndpoint()
     {
-        parent::setParameter('type', 'capture');
         return parent::getEndpoint();
     }
 }

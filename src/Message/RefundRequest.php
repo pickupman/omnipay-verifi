@@ -54,7 +54,8 @@ class RefundRequest extends AbstractXmlRequest
 
         $data = array(
             'amount'        => $this->getAmount(),
-            'transactionid' => $this->getTransactionReference()
+            'transactionid' => $this->getTransactionReference(),
+            'type'          => 'refund',
         );
 
         return $data;
@@ -69,7 +70,6 @@ class RefundRequest extends AbstractXmlRequest
      */
     protected function getEndpoint()
     {
-        parent::setParameter('type', 'refund');
         return parent::getEndpoint();
     }
 }

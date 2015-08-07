@@ -23,7 +23,12 @@ class Response extends AbstractResponse
      */
     public function isSuccessful()
     {
-        return $this->data['responsetext'] == 'SUCCESS';
+        if ( isset($this->data['response']) && isset($this->data['response_code']) )
+        {
+            return (bool)($this->data['response'] == '1' && $this->data['response_code'] == '100');
+        }
+
+        return false;
     }
 
     /**
@@ -40,24 +45,7 @@ class Response extends AbstractResponse
         return null;
     }
 
-    /**
-     * Get a customer reference, for createCustomer requests.
-     *
-     * @return string|null
-     */
-    public function getCustomerReference()
-    {
-        if (isset($this->data['object']) && 'customer' === $this->data['object']) {
-            return $this->data['id'];
-        }
-        if (isset($this->data['object']) && 'card' === $this->data['object']) {
-            if (! empty($this->data['customer'])) {
-                return $this->data['customer'];
-            }
-        }
 
-        return null;
-    }
 
     /**
      * Get a card reference, for createCard or createCustomer requests.
@@ -66,19 +54,7 @@ class Response extends AbstractResponse
      */
     public function getCardReference()
     {
-        if (isset($this->data['object']) && 'customer' === $this->data['object']) {
-            if (! empty($this->data['default_card'])) {
-                return $this->data['default_card'];
-            }
-            if (! empty($this->data['id'])) {
-                return $this->data['id'];
-            }
-        }
-        if (isset($this->data['object']) && 'card' === $this->data['object']) {
-            if (! empty($this->data['id'])) {
-                return $this->data['id'];
-            }
-        }
+
 
         return null;
     }
@@ -90,10 +66,10 @@ class Response extends AbstractResponse
      */
     public function getToken()
     {
-        if (isset($this->data['object']) && 'token' === $this->data['object']) {
-            return $this->data['id'];
+        if ( $this->isSuccessful() )
+        {
+            return $this->data['transactionid'];
         }
-
         return null;
     }
 

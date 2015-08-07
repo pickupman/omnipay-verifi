@@ -54,7 +54,8 @@ class VoidRequest extends AbstractXmlRequest
 
         $data = array(
             'amount'        => $this->getAmount(),
-            'transactionid' => $this->getTransactionReference()
+            'transactionid' => $this->getTransactionReference(),
+            'type'          => 'void'
         );
 
         return $data;
@@ -69,7 +70,6 @@ class VoidRequest extends AbstractXmlRequest
      */
     protected function getEndpoint()
     {
-        parent::setParameter('type', 'void');
         return parent::getEndpoint();
     }
 }

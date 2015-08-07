@@ -96,10 +96,33 @@ abstract class AbstractXmlRequest extends \Omnipay\Common\Message\AbstractReques
         return $this->getParameter('password');
     }
 
+    /**
+    * Set the gateway password
+    *
+    * @return string
+    */
+    public function setPassword($value){
+        return $this->setParameter('password', $value);
+    }
+
+    /**
+    * Process request
+    *
+    * @return mixed
+    */
     public function sendData($data)
     {
-        $data['username'] = $this->getUsername();
-        $data['password'] = $this->getPassword();
+        if ( true == $this->getParameter('testMode') )
+        {
+            $data['username'] = 'testintegration';
+            $data['password'] = 'password9';
+        }
+        else
+        {
+            $data['username'] = $this->getUsername();
+            $data['password'] = $this->getPassword();
+        }
+
 
         // don't throw exceptions for 4xx errors
         $this->httpClient->getEventDispatcher()->addListener(

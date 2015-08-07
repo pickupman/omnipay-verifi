@@ -75,9 +75,11 @@ class CreateCardRequest extends AbstractXmlRequest
 
         $data = array(
             'ipaddress'                 => $this->getClientIp(),
-            'merchant_defined_field_12' => 'VAULT',
             'merchant_defined_field_1'  => '1',
-            'amount'                    => '0.00'
+            'merchant_defined_field_2'  => '0',
+            'merchant_defined_field_12' => 'VAULT',
+            'amount'                    => '0.00',
+            'type'                      => 'verify'
         );
 
         $this->validate('card');
@@ -110,7 +112,6 @@ class CreateCardRequest extends AbstractXmlRequest
      */
     protected function getEndpoint()
     {
-        parent::setParameter('type', 'verify');
         return parent::getEndpoint();
     }
 }

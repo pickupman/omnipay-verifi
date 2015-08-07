@@ -18,7 +18,8 @@ class AuthorizeRequest extends AbstractXmlRequest
             'amount'           => $this->getAmount(),
             'orderid'          => $this->getTransactionReference(),
             'ipaddress'        => $this->getClientIp(),
-            'orderdescription' => ''
+            'orderdescription' => '',
+            'type'             => 'authorize'
         );
 
         // A card token can be provided if the card has been stored
@@ -60,7 +61,6 @@ class AuthorizeRequest extends AbstractXmlRequest
      */
     protected function getEndpoint()
     {
-        parent::setParameter('type', 'authorize');
         return parent::getEndpoint();
     }
 }

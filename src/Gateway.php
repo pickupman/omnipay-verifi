@@ -146,6 +146,17 @@ class Gateway extends AbstractGateway
      * @param array $parameters
      * @return \Omnipay\Verifi\Message\CreateCardRequest
      */
+    public function updateCard(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Verifi\Message\CreateCardRequest', $parameters);
+    }
+
+    /**
+     * Tokenize a card
+     *
+     * @param array $parameters
+     * @return \Omnipay\Verifi\Message\CreateCardRequest
+     */
     public function void(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Verifi\Message\VoidRequest', $parameters);
