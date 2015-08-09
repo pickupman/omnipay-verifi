@@ -85,12 +85,22 @@ class PurchaseRequest extends AbstractXmlRequest
 
         // A card token can be provided if the card has been stored
         // in the gateway.
-        if ($this->getCardReference()) {
+        if ($this->getCardReference())
+        {
             $data['transactionid'] = $this->getCardReference();
+
+            // Check for a level of continuity level
+            if ( $this->getLevelOfContinuity() )
+            {
+                $data['merchant_defined_field_2']  = $this->getLevelOfContinuity();
+                $data['merchant_defined_field_12'] = 'VAULT';
+            }
 
         // If no card token is provided then there must be a valid
         // card presented.
-        } else {
+        }
+        else
+        {
             $this->validate('card');
             $card = $this->getCard();
             $card->validate();

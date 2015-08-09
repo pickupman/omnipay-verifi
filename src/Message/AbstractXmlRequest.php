@@ -92,7 +92,8 @@ abstract class AbstractXmlRequest extends \Omnipay\Common\Message\AbstractReques
     *
     * @return string
     */
-    public function getPassword(){
+    public function getPassword()
+    {
         return $this->getParameter('password');
     }
 
@@ -101,8 +102,29 @@ abstract class AbstractXmlRequest extends \Omnipay\Common\Message\AbstractReques
     *
     * @return string
     */
-    public function setPassword($value){
+    public function setPassword($value)
+    {
         return $this->setParameter('password', $value);
+    }
+
+    /**
+    * Get the level of continuity for recurring billing
+    *
+    * @return string
+    */
+    public function getLevelOfContinuity()
+    {
+        return $this->getParameter('level_of_continuity');
+    }
+
+    /**
+    *  Set the level of continuity for recurring billing
+    *
+    * @param string
+    */
+    public function setLevelOfContinuity($value)
+    {
+        return $this->setParameter('level_of_continuity', $value);
     }
 
     /**
