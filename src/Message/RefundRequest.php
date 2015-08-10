@@ -45,7 +45,7 @@ namespace Omnipay\Verifi\Message;
  *
  * @see Omnipay\Verifi\VerifiGateway
  */
-class RefundRequest extends AbstractXmlRequest
+class RefundRequest extends AbstractVerifiRequest
 {
     public function getData()
     {

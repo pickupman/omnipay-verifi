@@ -166,7 +166,6 @@ class Gateway extends AbstractGateway
      /**
      * Create a customer
      *
-     * @link http://www.paystream.com.au/developer-guides/
      * @param array $parameters
      * @return \Omnipay\Verifi\Message\CreateCustomerRequest
      */
@@ -202,7 +201,6 @@ class Gateway extends AbstractGateway
      *
      * A subscription is an instance of a customer subscribing to a plan.
      *
-     * @link http://www.paystream.com.au/developer-guides/
      * @param array $parameters
      * @return \Omnipay\Verifi\Message\CreateSubscriptionRequest
      */
@@ -212,14 +210,38 @@ class Gateway extends AbstractGateway
     }
 
     /**
-     * Fetch details of a subscription
+     * Create a custom subscription
+     *
+     * A subscription is an instance of a customer subscribing to a plan.
      *
      * @param array $parameters
-     * @return \Omnipay\Verifi\Message\FetchSubscriptionRequest
+     * @return \Omnipay\Verifi\Message\CreateCustomSubscriptionRequest
      */
-    public function fetchSubscription(array $parameters = array())
+    public function createCustomSubscription(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Verifi\Message\FetchSubscriptionRequest', $parameters);
+        return $this->createRequest('\Omnipay\Verifi\Message\CreateCustomSubscriptionRequest', $parameters);
+    }
+
+    /**
+     * Update billing information of a subscription
+     *
+     * @param array $parameters
+     * @return \Omnipay\Verifi\Message\UpdateSubscriptionRequest
+     */
+    public function updateSubscription(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Verifi\Message\UpdateSubscriptionRequest', $parameters);
+    }
+
+    /**
+     * Update billing information of a subscription
+     *
+     * @param array $parameters
+     * @return \Omnipay\Verifi\Message\UpdateSubscriptionRequest
+     */
+    public function deleteSubscription(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Verifi\Message\DeleteSubscriptionRequest', $parameters);
     }
 
 }

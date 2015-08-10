@@ -38,7 +38,8 @@ class Response extends AbstractResponse
      */
     public function getTransactionReference()
     {
-        if (isset($this->data['transactionid'])) {
+        if (isset($this->data['transactionid']))
+        {
             return $this->data['transactionid'];
         }
 
@@ -54,8 +55,6 @@ class Response extends AbstractResponse
      */
     public function getCardReference()
     {
-
-
         return null;
     }
 
@@ -80,7 +79,8 @@ class Response extends AbstractResponse
      */
     public function getCard()
     {
-        if (isset($this->data['card'])) {
+        if (isset($this->data['card']))
+        {
             return $this->data['card'];
         }
 
@@ -96,8 +96,43 @@ class Response extends AbstractResponse
      */
     public function getMessage()
     {
-        if (!$this->isSuccessful()) {
+        if ( ! $this->isSuccessful() )
+        {
             return $this->data['responsetext'];
+        }
+
+        return null;
+    }
+
+    /**
+     * Check if subscription was successfull
+     *
+     * Returns null if the request was unsuccessful.
+     *
+     * @return string|null
+     */
+    public function isSubscribed()
+    {
+        if ( $this->isSuccessful() && isset($this->data['subscription_id']) )
+        {
+            return (bool)$this->data['subscription_id'];
+        }
+
+        return null;
+    }
+
+    /**
+     * Get subscription id
+     *
+     * Returns null if the request was unsuccessful.
+     *
+     * @return string|null
+     */
+    public function getSubscriptionId()
+    {
+        if ( $this->isSuccessful() && isset($this->data['subscription_id']) )
+        {
+            return $this->data['subscription_id'];
         }
 
         return null;

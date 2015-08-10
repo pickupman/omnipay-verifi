@@ -1,6 +1,6 @@
 <?php
 /**
- * Verifi Refund Request
+ * Verifi Void Request
  */
 
 namespace Omnipay\Verifi\Message;
@@ -43,9 +43,9 @@ namespace Omnipay\Verifi\Message;
  *   }
  * </code>
  *
- * @see Omnipay\Verifi\VerifiGateway
+ * @see Omnipay\Verifi\Gateway
  */
-class VoidRequest extends AbstractXmlRequest
+class VoidRequest extends AbstractVerifiRequest
 {
     public function getData()
     {

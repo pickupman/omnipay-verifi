@@ -128,6 +128,194 @@ abstract class AbstractXmlRequest extends \Omnipay\Common\Message\AbstractReques
     }
 
     /**
+    * Get the subscription plan id
+    *
+    * @param string
+    */
+    public function getPlanId($value)
+    {
+        return $this->getParameter('plan_id');
+    }
+
+    /**
+    * Set the subscription plan id
+    *
+    * @param string
+    */
+    public function setPlanId($value)
+    {
+        return $this->setParameter('plan_id', $value);
+    }
+
+    /**
+    * Get the start date for a subscription
+    *
+    * @param string YYYYMMDD
+    */
+    public function getStartDate()
+    {
+        return $this->getParameter('start_date', date("Ymd"));
+    }
+
+    /**
+    * Set the start date for a subscription
+    *
+    * @param string YYYYMMDD
+    */
+    public function setStartDate($value)
+    {
+        return $this->setParameter('start_date', $value);
+    }
+
+    /**
+    * Get the send customer receipt flag
+    *
+    * @param string
+    */
+    public function getCustomerReceipt()
+    {
+        return $this->getParameter('customer_receipt');
+    }
+
+    /**
+    * Set the send customer receipt flag
+    *
+    * @param string
+    */
+    public function setCustomerReceipt($value)
+    {
+        return $this->setParameter('customer_receipt', $value);
+    }
+
+    /**
+    * Get the number of plan payments
+    * Defaults to 0 = billed until cancelled
+    *
+    * @param string
+    */
+    public function getPlanPayments()
+    {
+        return $this->getParameter('plan_payments', '0');
+    }
+
+    /**
+    * Set the number of payments the customer will be bill
+    * Passing "0" will bill customer until canceled.
+    *
+    * @param string
+    */
+    public function setPlanPayments($value)
+    {
+        return $this->setParameter('plan_payments', $value);
+    }
+
+    /**
+    * Get the plan amount that will be billed
+    *
+    * @param string
+    */
+    public function getPlanAmount()
+    {
+        return $this->getParameter('plan_amount');
+    }
+
+    /**
+    * Set the plan amount customer will be billed each cycle
+    *
+    * @param string
+    */
+    public function setPlanAmount($value)
+    {
+        return $this->setParameter('plan_amount', $value);
+    }
+
+    /**
+    * Get the daily frequency billing option
+    *
+    * @param string
+    */
+    public function getDayFrequency()
+    {
+        return $this->getParameter('day_frequency');
+    }
+
+    /**
+    * Set the billing frequency on a daily schedule
+    * NOT to be used with month_frequency
+    *
+    * @param string
+    */
+    public function setDayFrequency($value)
+    {
+        return $this->setParameter('day_frequency', $value);
+    }
+
+    /**
+    * Get the monthly billing frequency
+    *
+    * @param string
+    */
+    public function getMonthFrequency()
+    {
+        return $this->getParameter('month_frequency');
+    }
+
+    /**
+    * Set the monthly billing frequency
+    * NOT to be used with day_frequency
+    * Valid values are 1 - 24
+    *
+    * @param string
+    */
+    public function setMonthFrequency($value)
+    {
+        return $this->setParameter('month_frequency', $value);
+    }
+
+    /**
+    * Get the day of the month billing will occur on
+    *
+    * @param string
+    */
+    public function getDayOfMonth()
+    {
+        return $this->getParameter('day_frequency');
+    }
+
+    /**
+    * Set the day of the month billing will occur on
+    * USED with month_frequency
+    * Valid values are 1 - 31. If value is greater than the number
+    * of days in a month, billing will occur on last day of that month
+    *
+    * @param string
+    */
+    public function setDayOfMonth($value)
+    {
+        return $this->setParameter('day_frequency', $value);
+    }
+
+    /**
+    * Get the subscription id
+    *
+    * @param string
+    */
+    public function getSubscriptionId()
+    {
+        return $this->getParameter('subscription_id');
+    }
+
+    /**
+    * Set the subscription id
+    *
+    * @param string
+    */
+    public function setSubscriptionId($value)
+    {
+        return $this->setParameter('subscription_id', $value);
+    }
+
+    /**
     * Process request
     *
     * @return mixed
@@ -136,8 +324,8 @@ abstract class AbstractXmlRequest extends \Omnipay\Common\Message\AbstractReques
     {
         if ( true == $this->getParameter('testMode') )
         {
-            $data['username'] = 'testintegration';
-            $data['password'] = 'password9';
+            $data['username'] = 'demo';
+            $data['password'] = 'password';
         }
         else
         {

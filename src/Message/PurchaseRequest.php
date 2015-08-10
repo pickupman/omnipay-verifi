@@ -66,9 +66,9 @@ namespace Omnipay\Verifi\Message;
  *   }
  * </code>
  *
- * @see Omnipay\Verifi\VerifiGateway
+ * @see Omnipay\Verifi\Gateway
  */
-class PurchaseRequest extends AbstractXmlRequest
+class PurchaseRequest extends AbstractVerifiRequest
 {
     public function getData()
     {

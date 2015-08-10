@@ -1,6 +1,6 @@
 <?php
 /**
- * Verifi Purchase Request
+ * Verifi Create Card Request
  */
 
 namespace Omnipay\Verifi\Message;
@@ -68,7 +68,7 @@ namespace Omnipay\Verifi\Message;
  *
  * @see Omnipay\Verifi\VerifiGateway
  */
-class CreateCardRequest extends AbstractXmlRequest
+class CreateCardRequest extends AbstractVerifiRequest
 {
     public function getData()
     {

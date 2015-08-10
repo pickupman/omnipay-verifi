@@ -5,9 +5,9 @@ namespace Omnipay\Verifi\Message;
 use Omnipay\Common\Message\AbstractRequest;
 
 /**
- * Verifi Authorize Request
+ * Verifi Capture Request
  */
-class CaptureRequest extends AbstractXmlRequest
+class CaptureRequest extends AbstractVerifiRequest
 {
     public function getData()
     {

@@ -7,7 +7,7 @@ use Omnipay\Common\Message\AbstractRequest;
 /**
  * Verifi Authorize Request
  */
-class AuthorizeRequest extends AbstractXmlRequest
+class AuthorizeRequest extends AbstractVerifiRequest
 {
     public function getData()
     {
