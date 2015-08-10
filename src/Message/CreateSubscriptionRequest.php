@@ -16,7 +16,6 @@ class CreateSubscriptionRequest extends AbstractVerifiRequest
 
         $data = array(
             'recurring'        => 'add_subscription',
-            'amount'           => $this->getAmount(),
             'plan_id'          => $this->getPlanId(),
             'start_date'       => $start_date,
             'payment'          => 'creditcard',

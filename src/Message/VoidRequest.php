@@ -6,7 +6,7 @@
 namespace Omnipay\Verifi\Message;
 
 /**
- * Fat Zebra REST Purchase Request
+ * Void Request
  *
  * In order to create a purchase you must submit the following details:
  *
@@ -50,10 +50,9 @@ class VoidRequest extends AbstractVerifiRequest
     public function getData()
     {
         // An amount parameter is required.
-        $this->validate('amount', 'transactionReference');
+        $this->validate('transactionReference');
 
         $data = array(
-            'amount'        => $this->getAmount(),
             'transactionid' => $this->getTransactionReference(),
             'type'          => 'void'
         );
