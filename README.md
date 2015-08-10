@@ -333,6 +333,19 @@ if ( $subscription->isSuccessful() ) {
 }
 ```
 
+## Test Mode
+
+This feature will *NOT* turn on test mode for your account. Test mode must be enabled or disabled from your Verifi control panel. All transactions processed on a live account will be charged.
+
+If you would like to use the default testing credentials from Verifi, please initialize the gateway with
+
+```php
+$gateway = Omnipay\Omnipay::create('Verifi');
+$gateway->setTestMode(true); // Automatically sets default testing gateway username and password
+```
+
+Any transactions processed with testMode(true) will not be charged, *OR* shown in your control panel. This method will automatically apply the testing username and password for the Verifi gateway.
+
 ## Support
 
 If you are having general issues with Omnipay, we suggest posting on
