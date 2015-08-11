@@ -44,6 +44,14 @@ abstract class AbstractVerifiRequest extends \Omnipay\Common\Message\AbstractReq
      * @var string URL
      */
     protected $liveEndpoint = 'https://secure.verifi.com/gw/api/transact.php';
+
+    /**
+    * Query API Endpoint URL
+    *
+    * @var string URL
+    */
+    protected $queryEndpoint = 'https://secure.verifi.com/api/query.php';
+
     /**
      * Get HTTP Method.
      *
@@ -65,6 +73,10 @@ abstract class AbstractVerifiRequest extends \Omnipay\Common\Message\AbstractReq
     {
         $base = $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
         return $base;
+    }
+
+    protected function setEndpoint($value) {
+
     }
 
     /**
@@ -279,7 +291,7 @@ abstract class AbstractVerifiRequest extends \Omnipay\Common\Message\AbstractReq
     */
     public function getDayOfMonth()
     {
-        return $this->getParameter('day_frequency');
+        return $this->getParameter('day_of_month');
     }
 
     /**
@@ -292,7 +304,7 @@ abstract class AbstractVerifiRequest extends \Omnipay\Common\Message\AbstractReq
     */
     public function setDayOfMonth($value)
     {
-        return $this->setParameter('day_frequency', $value);
+        return $this->setParameter('day_of_month', $value);
     }
 
     /**
@@ -315,6 +327,10 @@ abstract class AbstractVerifiRequest extends \Omnipay\Common\Message\AbstractReq
         return $this->setParameter('subscription_id', $value);
     }
 
+    public function getTransactionId() {
+        return $this->getParameter('transactionReference');
+    }
+
     /**
     * Process request
     *
@@ -332,7 +348,6 @@ abstract class AbstractVerifiRequest extends \Omnipay\Common\Message\AbstractReq
             $data['username'] = $this->getUsername();
             $data['password'] = $this->getPassword();
         }
-
 
         // don't throw exceptions for 4xx errors
         $this->httpClient->getEventDispatcher()->addListener(

@@ -244,4 +244,15 @@ class Gateway extends AbstractGateway
         return $this->createRequest('\Omnipay\Verifi\Message\DeleteSubscriptionRequest', $parameters);
     }
 
+    /**
+     * Fetch details of a customer
+     *
+     * @param array $parameters
+     * @return \Omnipay\Verifi\Message\FetchCustomerRequest
+     */
+    public function fetchTransaction(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Verifi\Message\FetchTransactionRequest', $parameters);
+    }
+
 }
