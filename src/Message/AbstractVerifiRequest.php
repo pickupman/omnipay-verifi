@@ -29,7 +29,7 @@ use Guzzle\Stream\PhpStreamRequestFactory;
  *
  * @see \Omnipay\Verifi\VerifiGateway
  */
-abstract class AbstractXmlRequest extends \Omnipay\Common\Message\AbstractRequest
+abstract class AbstractVerifiRequest extends \Omnipay\Common\Message\AbstractRequest
 {
     const API_VERSION = 'v1.0';
     /**
